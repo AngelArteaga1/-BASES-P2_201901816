@@ -1,0 +1,13 @@
+CALL CrearCarrera('Ingenieria en Ciencias y Sistemas');
+select * from carreras;
+CALL RegistrarEstudiante(201901816, 'Angel Oswaldo', 'Arteaga Garcia', '2001-03-01', 'angel.arteaga.aa01@gmail.com', 42455873, 'Ciudad', 3006137170101, 22);
+select * from estudiantes;
+CALL RegistrarDocente('Pedro Franciso', 'Alvarado Fenandez', '1986-03-01', 'pepe@yahoo.com', 42455873, 'Ciudad', 3006137123423, 1);
+select * from docentes;
+CALL CrearCurso(1, 'Matematica Basica I', 0, 10, true, 0);
+select * from cursos;
+CALL HabilitarCurso(1, '1S', 1, 100, 'a');
+select * from cursos_habilitados;
+CALL AsignarCurso(1, '1S', 'a', 201901816);
+CALL DesasignarCurso(1, '1S', 'a', 201901816);
+select * from asignaciones;
