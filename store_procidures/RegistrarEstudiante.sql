@@ -3,6 +3,14 @@ CREATE DEFINER=`root`@`%` PROCEDURE `RegistrarEstudiante`(IN pCarnet BIGINT(10),
                                         IN pDireccion VARCHAR(120), IN pDpi BIGINT(16), IN pidCarrera INT)
 RegistrarEstudiante:BEGIN
 	-- Primero validamos los datos
+	IF pNombres NOT REGEXP '^[a-zA-Z ]*$' THEN 
+		SELECT 'La cadena del nombre no es correcta' as Error; 
+        LEAVE RegistrarEstudiante;
+	END IF;
+	IF pApellidos NOT REGEXP '^[a-zA-Z ]*$' THEN 
+		SELECT 'La cadena del nombre no es correcta' as Error; 
+        LEAVE RegistrarEstudiante;
+	END IF;
 	IF pCorreo NOT REGEXP '^[^@]+@[^@]+\.[^@]{2,}$' THEN 
 		SELECT 'La cadena del correo no es correcta' as Error; 
         LEAVE RegistrarEstudiante;

@@ -3,6 +3,14 @@ CREATE DEFINER=`root`@`%` PROCEDURE `RegistrarDocente`(IN pNombres VARCHAR(50), 
                                         IN pDireccion VARCHAR(120), IN pDpi BIGINT(16), IN pRegistroSIIF INT)
 RegistrarDocente:BEGIN
 	-- Primero validamos los datos
+	IF pNombres NOT REGEXP '^[a-zA-Z ]*$' THEN 
+		SELECT 'La cadena del nombre no es correcta' as Error; 
+        LEAVE RegistrarDocente;
+	END IF;
+	IF pApellidos NOT REGEXP '^[a-zA-Z ]*$' THEN 
+		SELECT 'La cadena del nombre no es correcta' as Error; 
+        LEAVE RegistrarDocente;
+	END IF;
 	IF pCorreo NOT REGEXP '^[^@]+@[^@]+\.[^@]{2,}$' THEN 
 		SELECT 'La cadena del correo no es correcta' as Error; 
         LEAVE RegistrarDocente;

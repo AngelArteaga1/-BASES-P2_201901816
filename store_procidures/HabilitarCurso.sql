@@ -26,8 +26,8 @@ HabilitarCurso:BEGIN
         LEAVE HabilitarCurso;
 	END IF;
     
-	INSERT INTO cursos_habilitados (idcurso, ciclo, iddocente, cupo, seccion)
-	VALUES (pIdCurso, pCiclo, pIdDocente, pCupo, UPPER(pSeccion));
+	INSERT INTO cursos_habilitados (idcurso, ciclo, iddocente, cupo, seccion, anio, actagenerada)
+	VALUES (pIdCurso, pCiclo, pIdDocente, pCupo, UPPER(pSeccion), YEAR(NOW()), false);
     
     SELECT 'Curso Habilitado Correctamente!' as Success;
     
